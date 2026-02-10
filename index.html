@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceCraft ✏️ AI Voice Message Generator</title>
+  <meta name="description"
+    content="Convert typed messages into natural voice messages for WhatsApp, Telegram & more. 39 AI speakers, 11 Indian languages. Sketched with love." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo-group">
+          <div class="logo-icon" style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+            <i class="fas fa-microphone-lines"></i>
+          </div>
+          <div>
+            <h1 class="logo-text">VoiceCraft <span class="logo-pencil">✏️</span></h1>
+            <p class="logo-tagline">~ your words, their voice ~</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn-sketchy btn-fav-toggle" id="favoritesToggle"
+            style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+            <i class="fas fa-heart"></i> Favorites
+            <span class="badge-hand" id="favCount">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Tagline -->
+    <div class="hero-banner" style="border-radius: 30px 255px 15px 225px / 225px 15px 255px 30px;">
+      <div class="tape-decoration"></div>
+      <p>Type your message → Pick a voice → Send as voice note! 🎙️</p>
+      <p class="hero-sub">Perfect for noisy places, speech difficulties, or speaking in languages you can't pronounce 💬
+      </p>
+      <!-- Hand-drawn arrow decoration -->
+      <svg class="hero-arrow hidden-mobile" width="80" height="60" viewBox="0 0 80 60" fill="none">
+        <path d="M5 50 Q 20 10, 55 15 Q 70 18, 75 10" stroke="#ff4d4d" stroke-width="2.5" fill="none"
+          stroke-dasharray="6 4" />
+        <polygon points="72,4 78,12 68,12" fill="#ff4d4d" />
+      </svg>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Left Panel: Input & Controls -->
+      <section class="panel sketch-card" style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+        <div class="tack-decoration"></div>
+        <h2 class="panel-title">📝 Your Message</h2>
+
+        <!-- Text Input -->
+        <div class="textarea-wrapper">
+          <textarea id="messageInput" placeholder="Scribble your message here... ✍️ Write in any Indian language!"
+            maxlength="2500" rows="5" style="border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;"></textarea>
+          <div class="textarea-footer">
+            <span class="char-count"><span id="charCount">0</span> / 2500 chars</span>
+            <button class="btn-text-hand" id="clearBtn">🧹 Clear</button>
+          </div>
+        </div>
+
+        <!-- Emotion Presets -->
+        <div class="section-block">
+          <h3 class="section-title-hand">🎭 Quick Mood Presets</h3>
+          <div class="presets-grid">
+            <button class="preset-card" data-speaker="Aditya" data-pace="1.0" data-mood="formal"
+              style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; transform: rotate(-1deg);">
+              <span class="preset-emoji">🎩</span>
+              <span class="preset-label">Formal</span>
+              <span class="preset-speaker-name">Aditya</span>
+            </button>
+            <button class="preset-card" data-speaker="Priya" data-pace="1.1" data-mood="friendly"
+              style="border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px; transform: rotate(1deg);">
+              <span class="preset-emoji">😊</span>
+              <span class="preset-label">Friendly</span>
+              <span class="preset-speaker-name">Priya</span>
+            </button>
+            <button class="preset-card" data-speaker="Neha" data-pace="1.3" data-mood="energetic"
+              style="border-radius: 225px 15px 255px 15px / 15px 255px 15px 225px; transform: rotate(-0.5deg);">
+              <span class="preset-emoji">⚡</span>
+              <span class="preset-label">Energetic</span>
+              <span class="preset-speaker-name">Neha</span>
+            </button>
+            <button class="preset-card" data-speaker="Kavya" data-pace="0.9" data-mood="calm"
+              style="border-radius: 15px 255px 225px 15px / 225px 15px 15px 255px; transform: rotate(1.5deg);">
+              <span class="preset-emoji">🧘</span>
+              <span class="preset-label">Calm</span>
+              <span class="preset-speaker-name">Kavya</span>
+            </button>
+            <button class="preset-card" data-speaker="Rahul" data-pace="1.2" data-mood="confident"
+              style="border-radius: 255px 25px 225px 5px / 25px 225px 5px 255px; transform: rotate(-1.5deg);">
+              <span class="preset-emoji">💪</span>
+              <span class="preset-label">Confident</span>
+              <span class="preset-speaker-name">Rahul</span>
+            </button>
+            <button class="preset-card" data-speaker="Simran" data-pace="0.95" data-mood="warm"
+              style="border-radius: 225px 15px 255px 25px / 15px 255px 25px 225px; transform: rotate(0.5deg);">
+              <span class="preset-emoji">🤗</span>
+              <span class="preset-label">Warm</span>
+              <span class="preset-speaker-name">Simran</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Language Selector -->
+        <div class="section-block">
+          <h3 class="section-title-hand">🌍 Language</h3>
+          <div class="select-wrapper" style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+            <select id="languageSelect">
+              <option value="hi-IN">🇮🇳 Hindi — हिन्दी</option>
+              <option value="en-IN">🇬🇧 English (Indian)</option>
+              <option value="bn-IN">Bengali — বাংলা</option>
+              <option value="ta-IN">Tamil — தமிழ்</option>
+              <option value="te-IN">Telugu — తెలుగు</option>
+              <option value="mr-IN">Marathi — मराठी</option>
+              <option value="gu-IN">Gujarati — ગુજરાતી</option>
+              <option value="kn-IN">Kannada — ಕನ್ನಡ</option>
+              <option value="ml-IN">Malayalam — മലയാളം</option>
+              <option value="pa-IN">Punjabi — ਪੰਜਾਬੀ</option>
+              <option value="od-IN">Odia — ଓଡ଼ିଆ</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Pace Control -->
+        <div class="section-block">
+          <h3 class="section-title-hand">🏃 Speaking Pace</h3>
+          <div class="pace-control">
+            <span class="pace-end-label">🐢 0.5x</span>
+            <input type="range" id="paceSlider" min="0.5" max="2.0" step="0.1" value="1.0" />
+            <span class="pace-end-label">2.0x 🐇</span>
+          </div>
+          <div class="pace-value-bubble" style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+            <span id="paceValue">1.0x</span> — Normal speed
+          </div>
+        </div>
+
+        <!-- Generate Button -->
+        <button class="generate-btn" id="generateBtn"
+          style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+          <span class="btn-content-main" id="btnContentMain">🎙️ Generate Voice Message!</span>
+          <span class="btn-content-loading" id="btnContentLoading" style="display:none;">
+            <span class="scribble-loader"></span> Sketching your voice...
+          </span>
+        </button>
+
+      </section>
+
+      <!-- Right Panel: Speaker Selection + Audio Player -->
+      <section class="panel sketch-card" style="border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;">
+        <div class="tape-decoration" style="transform: rotate(2deg);"></div>
+        <h2 class="panel-title">🗣️ Choose a Speaker</h2>
+
+        <!-- Speaker Search -->
+        <div class="search-wrapper" style="border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="speakerSearch" placeholder="Search speakers..." />
+        </div>
+
+        <!-- Speaker Grid -->
+        <div class="speakers-grid" id="speakersGrid">
+          <!-- Speakers injected via JS -->
+        </div>
+
+        <!-- Audio Player -->
+        <div class="audio-player-section" id="audioSection"
+          style="display: none; border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+          <div class="postit-tag">▶ Now Playing</div>
+          <div class="player-header">
+            <h3>🔊 Your Voice Message</h3>
+            <div class="player-actions">
+              <button class="btn-action-hand" id="saveFavBtn" title="Save to Favorites"
+                style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+                <i class="far fa-heart"></i>
+              </button>
+              <button class="btn-action-hand" id="downloadBtn" title="Download"
+                style="border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;">
+                <i class="fas fa-download"></i>
+              </button>
+              <button class="btn-action-hand" id="shareBtn" title="Share"
+                style="border-radius: 225px 15px 255px 15px / 15px 255px 15px 225px;">
+                <i class="fas fa-share-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Waveform -->
+          <div class="waveform-box" style="border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;">
+            <canvas id="waveformCanvas"></canvas>
+          </div>
+
+          <!-- Controls -->
+          <div class="audio-controls">
+            <button class="play-btn-hand" id="playPauseBtn"
+              style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+              <i class="fas fa-play"></i>
+            </button>
+            <div class="progress-area">
+              <div class="progress-track" id="progressBar"
+                style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+                <div class="progress-fill-hand" id="progressFill"></div>
+              </div>
+              <div class="time-labels">
+                <span id="currentTime">0:00</span>
+                <span id="totalTime">0:00</span>
+              </div>
+            </div>
+          </div>
+
+          <audio id="audioPlayer"></audio>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-hand">
+      <p>Sketched with ❤️ using <a href="https://sarvam.ai" target="_blank">Sarvam AI</a> Bulbul v3 — 39 voices, 11
+        languages</p>
+    </footer>
+
+  </div>
+
+  <!-- Favorites Sidebar -->
+  <div class="fav-overlay" id="favOverlay"></div>
+  <aside class="fav-sidebar" id="favSidebar">
+    <div class="fav-header-hand">
+      <h2>❤️ Favorites</h2>
+      <button class="btn-close-hand" id="closeFav"
+        style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">✕</button>
+    </div>
+    <div class="fav-list" id="favList">
+      <div class="fav-empty-state">
+        <span class="fav-empty-icon">💔</span>
+        <p>No favorites yet!</p>
+        <span>Generate a voice & save it here</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast -->
+  <div class="toast-hand" id="toast" style="border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+    <span id="toastIcon">✅</span>
+    <span id="toastMsg">Success!</span>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
