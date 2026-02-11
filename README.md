@@ -348,4 +348,4 @@ The Web Share API with file sharing is only available on HTTPS connections and i
 
 ## License
 
-This project is provided as-is for educational and personal use. The Sarvam AI API is subject to its own terms of service and usage limits as described at https://docs.sarvam.ai/.
+This project is provided as-is for educational and personal use. The Sarvam AI API is subject to its own terms of service and usage limits as described at https://docs.sarvam.ai .
