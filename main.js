@@ -479,9 +479,9 @@ function renderFavorites() {
     <div class="fav-item" data-index="${idx}">
       <div class="fav-item-text">${escapeHtml(fav.text)}</div>
       <div class="fav-item-meta">
-        <span class="fav-tag speaker-tag">🗣️ ${fav.speaker}</span>
-        <span class="fav-tag lang-tag">🌍 ${fav.language}</span>
-        <span class="fav-tag pace-tag">🏃 ${fav.pace}x</span>
+        <span class="fav-tag speaker-tag">🗣️ ${escapeHtml(fav.speaker)}</span>
+        <span class="fav-tag lang-tag">🌍 ${escapeHtml(fav.language)}</span>
+        <span class="fav-tag pace-tag">🏃 ${escapeHtml(String(fav.pace) + 'x')}</span>
         <div class="fav-item-actions">
           <button class="fav-use-btn" data-index="${idx}" title="Use this">↩</button>
           <button class="fav-del-btn" data-index="${idx}" title="Delete">✕</button>
